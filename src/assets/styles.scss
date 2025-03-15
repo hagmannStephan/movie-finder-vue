@@ -1,0 +1,80 @@
+:root {
+    --papaya-whip: #F9D68B;
+    --ash-gray: #C6D8D3;
+    --jet: #3A3335;
+    --raspberry: #E95D8C;
+    --vermilion: #F5928E;
+
+    --papaya-whip-strong: #F5BB3D;
+    --ash-gray-strong: #92B5AB;
+    --jet-strong: #0B0A0A;
+    --raspberry-strong: #D81E5B;
+    --vermilion-strong: #F0544F;
+    
+    --raspberry-light: #F8C9D9;
+    --vermilion-light: #FCDBD9;
+    --ash-gray-light: #F3F7F6;
+    --papaya-whip-light: #FDF1D8;
+    --jet-light: #77696D;
+
+    --grid-spacing: 0.5rem;
+
+    --spacing-xxs: var(--grid-spacing) * 0.5;
+    --spacing-xs: var(--grid-spacing) * 1;
+    --spacing-s: var(--grid-spacing) * 2;
+    --spacing-m: var(--grid-spacing) * 3;
+    --spacing-l: var(--grid-spacing) * 4;
+    --spacing-xl: var(--grid-spacing) * 5;
+    --spacing-xxl: var(--grid-spacing) * 8;
+
+    --font-primary: 'Bebas-Neue';
+    --font-secondary: 'Roboto';
+}
+
+@font-face{
+    font-family: 'Bebas-Neue';
+    src: url('/fonts/Bebas-Neue/BebasNeue-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto/static/Roboto-Regular.ttf') format('truetype');
+}
+
+body {
+    padding: var(--spacing-xs);
+    margin: 0;
+}
+
+h1 {
+    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    color: var(--jet-strong);
+    text-decoration: underline;
+    padding: var(--grid-spacing-s) var(--grid-spacing-m);
+}
+
+h2 {
+    font-family: var(--font-primary);
+    font-size: 3rem;
+    color: var(--jet-strong);
+    padding: var(--grid-spacing-s) var(--grid-spacing-m);
+}
+
+h3 {
+    font-family: var(--font-primary);
+    font-size: 2.25rem;
+    color: var(--jet-strong);
+    padding: var(--grid-spacing-s) var(--grid-spacing-s);
+}
+
+p {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    color: var(--jet-strong);
+    padding: var(--grid-spacing-s) var(--grid-spacing-s);
+}
+
+p.differentiate {
+    font-family: var(--font-secondary);
+}
