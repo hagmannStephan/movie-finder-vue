@@ -19,16 +19,25 @@
 
     --grid-spacing: 0.5rem;
 
-    --spacing-xxs: var(--grid-spacing) * 0.5;
-    --spacing-xs: var(--grid-spacing) * 1;
-    --spacing-s: var(--grid-spacing) * 2;
-    --spacing-m: var(--grid-spacing) * 3;
-    --spacing-l: var(--grid-spacing) * 4;
-    --spacing-xl: var(--grid-spacing) * 5;
-    --spacing-xxl: var(--grid-spacing) * 8;
+    --spacing-xxs: calc(var(--grid-spacing) * 0.5);
+    --spacing-xs: calc(var(--grid-spacing) * 1);
+    --spacing-s: calc(var(--grid-spacing) * 2);
+    --spacing-m: calc(var(--grid-spacing) * 3);
+    --spacing-l: calc(var(--grid-spacing) * 4);
+    --spacing-xl: calc(var(--grid-spacing) * 5);
+    --spacing-xxl: calc(var(--grid-spacing) * 8);
 
     --font-primary: 'Bebas-Neue';
     --font-secondary: 'Roboto';
+
+    font-family: var(--font-primary), system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1;
+    font-weight: 400;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @font-face{
@@ -41,9 +50,17 @@
     src: url('/fonts/Roboto/static/Roboto-Regular.ttf') format('truetype');
 }
 
-body {
-    padding: var(--spacing-xs);
+html {
+    font-family: var(--font-primary);
+    background-color: var(--ash-gray-light);
     margin: 0;
+    padding: var(--spacing-s);
+}
+
+body {
+    overflow: auto;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -51,28 +68,28 @@ h1 {
     font-size: 3.5rem;
     color: var(--jet-strong);
     text-decoration: underline;
-    padding: var(--grid-spacing-s) var(--grid-spacing-m);
+    margin: var(--spacing-s) 0 var(--spacing-m) 0;
 }
 
 h2 {
     font-family: var(--font-primary);
     font-size: 3rem;
     color: var(--jet-strong);
-    padding: var(--grid-spacing-s) var(--grid-spacing-m);
+    margin: var(--spacing-s) 0 var(--spacing-m) 0;
 }
 
 h3 {
     font-family: var(--font-primary);
     font-size: 2.25rem;
     color: var(--jet-strong);
-    padding: var(--grid-spacing-s) var(--grid-spacing-s);
+    margin: var(--spacing-s) 0 var(--spacing-s) 0;
 }
 
 p {
     font-family: var(--font-primary);
     font-size: 1.5rem;
     color: var(--jet-strong);
-    padding: var(--grid-spacing-s) var(--grid-spacing-s);
+    margin: var(--spacing-s) 0 var(--spacing-s) 0;
 }
 
 p.differentiate {
