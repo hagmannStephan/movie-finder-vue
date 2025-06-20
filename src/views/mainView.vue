@@ -2,13 +2,14 @@
 import { ref } from 'vue';
 import '../assets/styles.scss';
 import '../css/main.css';
+import router from '../router';
 
 const loginRef = ref<Boolean>(false);
 const registerRef = ref<Boolean>(false);
 
 const email = ref('');
 const password = ref('');
-const username = ref('');
+const name = ref('');
 const confirmPassword = ref('');
 
 const login = () => {
@@ -35,25 +36,43 @@ const back = () => {
 };
 
 const submitLogin = async () => {
-  const res = await fetch('https://api.moviefinder.stephanhagmann.ch/auth/token', {
+  console.log(email.value, password.value);
+  const formData = new URLSearchParams();
+  formData.append('email', email.value);
+  formData.append('password', password.value);
+
+  const res = await fetch('https://api.moviefinder.stephanhagmann.ch/auth/token/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: JSON.stringify({ email: email.value, password: password.value })
+    body: formData
   });
+
   const data = await res.json();
-  console.log(data); // handle token
+  console.log(data);
+  if (data.access) {
+    localStorage.setItem('access_token', data.access);
+    localStorage.setItem('refresh_token', data.refresh);
+    router.push('/movies');
+  } else {
+    console.error('Login failed:', data);
+  }
 };
 
 const submitRegister = async () => {
   if (password.value !== confirmPassword.value) return;
 
-  const res = await fetch('https://api.moviefinder.stephanhagmann.ch/users', {
+  const res = await fetch('https://api.moviefinder.stephanhagmann.ch/users/', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: JSON.stringify({ username: username.value, email: email.value, password: password.value })
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+      name: name.value, 
+      email: email.value, 
+      password: password.value 
+    })
   });
+  console.log(res);
   const data = await res.json();
-  console.log(data); // handle response
+  console.log(data); 
 };
 </script>
 
@@ -64,14 +83,14 @@ const submitRegister = async () => {
     </div>
     <div class="screenPlaceholder">
       <div v-if="loginRef === true" class="loginScreen">
-        <input class="input" type="email" placeholder="Email" />
-        <input class="input" type="password" placeholder="Password" />
+        <input class="input" v-model="email" type="email" placeholder="Email" />
+        <input class="input" v-model="password" type="password" placeholder="Password" />
       </div>
       <div v-if="registerRef === true" class="registerScreen">
-        <input class="input" type="text" placeholder="Username" />
-        <input class="input" type="email" placeholder="Email" />
-        <input class="input" type="password" placeholder="Password" />
-        <input class="input" type="password" placeholder="Confirm Password" />
+        <input class="input" v-model="name" type="text" placeholder="Username" />
+        <input class="input" v-model="email" type="email" placeholder="Email" />
+        <input class="input" v-model="password" type="password" placeholder="Password" />
+        <input class="input" v-model="confirmPassword" type="password" placeholder="Confirm Password" />
       </div>
     </div>
     <div class="mainButtons">
