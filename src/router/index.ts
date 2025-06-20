@@ -1,32 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import LoginView from '../views/loginView.vue'
-import RegisterView from '../views/registerView.vue'
-import HomeView from '../views/homeView.vue'
+import MainView from '../views/mainView.vue'
 import SettingsView from '../views/settingsView.vue'
 
 const routes: Array<RouteRecordRaw> = [
 {
     path: '/',
-    redirect: '/login'
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: LoginView,
+    name: 'Root',
+    component: MainView,
     meta: { showHeader: false }
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: RegisterView,
-    meta: { showHeader: false }
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: HomeView,
-    meta: { showHeader: true }
   },
   {
     path: '/settings',
