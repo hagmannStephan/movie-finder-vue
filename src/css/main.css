@@ -1,0 +1,75 @@
+.main {
+  width: 16rem;
+}
+
+/* Logo */
+
+.mainLogo {
+  margin-top: 1.5rem;
+}
+
+.mainLogo img {
+  box-shadow: 4px 4px 16px var(--vermilion-light);
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+/* --- */
+
+.mainButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  top: 2rem;
+  position: relative;
+}
+
+.screenPlaceholder {
+  margin-top: 2rem;
+  height: 11rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginScreen {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mainButtons button {
+  height: 3rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1; 
+  padding: 0;     
+}
+
+.mainButtonLogin {
+  background-color: var(--raspberry);
+  box-shadow: 4px 4px 4px var(--raspberry-light);
+}
+
+.mainButtonRegister {
+  background-color: var(--vermilion);
+  box-shadow: 4px 4px 4px var(--vermilion-light);
+}
