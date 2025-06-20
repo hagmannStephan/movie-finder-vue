@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import MainView from '../views/mainView.vue'
 import SettingsView from '../views/settingsView.vue'
+import MovieView from '../views/movieView.vue'
 
 const routes: Array<RouteRecordRaw> = [
 {
@@ -15,6 +16,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Settings',
     component: SettingsView,
     meta: { showHeader: true }
+  },
+  {
+  path: '/movies',
+  name: 'Movies',
+  component: MovieView,
+  meta: { showHeader: true }
   },
   // weitere Routen …
 ]
