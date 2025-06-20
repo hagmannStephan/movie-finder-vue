@@ -49,13 +49,13 @@ const submitLogin = async () => {
 
   const data = await res.json();
   console.log(data);
-  if (data.access) {
-    localStorage.setItem('access_token', data.access);
-    localStorage.setItem('refresh_token', data.refresh);
+  // if (data.access) {
+  //   localStorage.setItem('access_token', data.access);
+  //   localStorage.setItem('refresh_token', data.refresh);
     router.push('/movies');
-  } else {
-    console.error('Login failed:', data);
-  }
+  // } else {
+  //   console.error('Login failed:', data);
+  // }
 };
 
 const submitRegister = async () => {
