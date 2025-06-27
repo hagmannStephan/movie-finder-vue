@@ -107,7 +107,11 @@ export const authAPI = {
   register: (userData: { email: string; password: string; name: string }) =>
     api.post('/users/', userData),
   
-  logout: () => api.post('/auth/logout'), // This endpoint might not exist, but keeping for now
+  logout: () => {
+    // No API endpoint for logout, just clear local storage
+    localStorage.removeItem('authToken')
+    return Promise.resolve({ data: { message: 'Logged out successfully' } })
+  },
   
   getProfile: () => api.get('/users/me'),
 }

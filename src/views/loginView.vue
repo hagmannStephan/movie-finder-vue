@@ -76,8 +76,8 @@ const login = async () => {
       localStorage.setItem('authToken', response.data.access_token)
     }
     
-    // Redirect to home
-    router.push('/home')
+    // Redirect to swipe view
+    router.push('/swipe')
   } catch (err: any) {
     console.error('Login error:', err)
     error.value = err.response?.data?.detail || 'Invalid email or password'

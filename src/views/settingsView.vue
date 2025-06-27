@@ -52,19 +52,29 @@ const closeLogoutConfirm = () => {
 
 const logout = async () => {
   try {
+    // Close the modal first
+    showLogoutConfirm.value = false
+    
+    // Call the logout API (which now just clears localStorage)
     await authAPI.logout()
+    
+    // Redirect to login
+    router.push('/login')
   } catch (error) {
     console.error('Error during logout:', error)
-  } finally {
-    // Clear local storage and redirect regardless of API response
+    // Even if there's an error, still logout locally
     localStorage.removeItem('authToken')
     router.push('/login')
   }
 }
+
+// Navigation is now handled by the Header component
 </script>
 
 <template>
   <div class="settings-view">
+
+
     <div class="settings-container">
       <h1 class="settings-title">Settings</h1>
 
@@ -134,7 +144,11 @@ const logout = async () => {
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
   color: white;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
 }
+
+
 
 .settings-container {
   background: #2a2a2a;

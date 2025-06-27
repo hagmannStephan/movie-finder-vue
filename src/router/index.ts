@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import LoginView from '../views/loginView.vue'
 import RegisterView from '../views/registerView.vue'
+import SwipeView from '../views/swipeView.vue'
 import HomeView from '../views/homeView.vue'
 import SettingsView from '../views/settingsView.vue'
 
@@ -21,6 +22,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Register',
     component: RegisterView,
     meta: { showHeader: false, requiresAuth: false }
+  },
+  {
+    path: '/swipe',
+    name: 'Swipe',
+    component: SwipeView,
+    meta: { showHeader: true, requiresAuth: true }
   },
   {
     path: '/home',
@@ -51,7 +58,7 @@ router.beforeEach((to) => {
   }
   
   if (isAuthenticated && (to.path === '/login' || to.path === '/register')) {
-    return '/home'
+    return '/swipe'
   }
 })
 
