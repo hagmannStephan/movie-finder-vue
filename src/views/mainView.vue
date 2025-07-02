@@ -49,13 +49,13 @@ const submitLogin = async () => {
 
   const data = await res.json();
   console.log(data);
-  // if (data.access) {
-  //   localStorage.setItem('access_token', data.access);
-  //   localStorage.setItem('refresh_token', data.refresh);
-    router.push('/movies');
-  // } else {
-  //   console.error('Login failed:', data);
-  // }
+  if (data.access_token) {
+    localStorage.setItem('authToken', data.access_token);
+    localStorage.setItem('refresh_token', data.refresh_token);
+    router.push('/swipe');
+  } else {
+    console.error('Login failed:', data);
+  }
 };
 
 const submitRegister = async () => {
@@ -77,34 +77,80 @@ const submitRegister = async () => {
 </script>
 
 <template>
-  <div class="main">
-    <div class="mainLogo">
-      <img src="../assets/MovieFinderLogo.svg">
-    </div>
-    <div class="screenPlaceholder">
-      <div v-if="loginRef === true" class="loginScreen">
-        <input class="input" v-model="email" type="email" placeholder="Email" />
-        <input class="input" v-model="password" type="password" placeholder="Password" />
+  <div class="login-view">
+    <div class="login-container">
+      <div class="mainLogo">
+        <img src="../assets/MovieFinderLogo.svg">
       </div>
-      <div v-if="registerRef === true" class="registerScreen">
-        <input class="input" v-model="name" type="text" placeholder="Username" />
-        <input class="input" v-model="email" type="email" placeholder="Email" />
-        <input class="input" v-model="password" type="password" placeholder="Password" />
-        <input class="input" v-model="confirmPassword" type="password" placeholder="Confirm Password" />
+      <div class="mainTitle">
+        <h1>MovieFinder</h1>
       </div>
-    </div>
-    <div class="mainButtons">
-      <div class="buttonWrapper">
-        <button v-if="!registerRef" @click="login" class="mainButtonLogin">Login</button>
+      <div class="screenPlaceholder">
+        <div v-if="loginRef === true" class="loginScreen">
+          <input class="input" v-model="email" type="email" placeholder="Email" />
+          <input class="input" v-model="password" type="password" placeholder="Password" />
+        </div>
+        <div v-if="registerRef === true" class="registerScreen">
+          <input class="input" v-model="name" type="text" placeholder="Username" />
+          <input class="input" v-model="email" type="email" placeholder="Email" />
+          <input class="input" v-model="password" type="password" placeholder="Password" />
+          <input class="input" v-model="confirmPassword" type="password" placeholder="Confirm Password" />
+        </div>
       </div>
-      <div class="buttonWrapper">
-        <button v-if="!loginRef" @click="register" class="mainButtonRegister">Register</button>
+      <div class="mainButtons">
+        <div class="buttonWrapper">
+          <button v-if="!registerRef" @click="login" class="mainButtonLogin">Login</button>
+        </div>
+        <div class="buttonWrapper">
+          <button v-if="!loginRef" @click="register" class="mainButtonRegister">Register</button>
+        </div>
       </div>
-    </div>
-    <div v-if="loginRef || registerRef" class="backDiv">
-      <a @click="back"><- Back</a>
+      <div v-if="loginRef || registerRef" class="backDiv">
+        <a @click="back"><- Back</a>
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.login-view {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fff 0%, #2d2d2d 100%);
+  padding: 20px;
+}
+
+.login-container {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.mainLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mainTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mainLogo img {
+  width: 12rem;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+</style>

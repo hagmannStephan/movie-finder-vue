@@ -4,19 +4,14 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #1a1a1a;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 html {
@@ -28,7 +23,7 @@ body {
   margin: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background: linear-gradient(135deg, #fff 0%, #fff 100%);
   color: white;
   overflow: hidden;
 }
@@ -79,13 +74,8 @@ p {
 /* Links */
 a {
   font-weight: 500;
-  color: #4CAF50;
   text-decoration: none;
   transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #45a049;
 }
 
 /* Buttons */
@@ -104,7 +94,6 @@ button {
 }
 
 button:hover:not(:disabled) {
-  background-color: #45a049;
   transform: translateY(-2px);
 }
 
@@ -116,28 +105,7 @@ button:disabled {
 
 button:focus,
 button:focus-visible {
-  outline: 2px solid #4CAF50;
   outline-offset: 2px;
-}
-
-/* Form Elements */
-input, textarea {
-  font-family: inherit;
-  font-size: 1em;
-  outline: none;
-  border: 2px solid #444;
-  border-radius: 8px;
-  background: #2a2a2a;
-  color: white;
-  transition: border-color 0.3s ease;
-}
-
-input:focus, textarea:focus {
-  border-color: #4CAF50;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #888;
 }
 
 /* Scrollbar Styling */

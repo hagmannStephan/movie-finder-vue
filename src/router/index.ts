@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import LoginView from '../views/loginView.vue'
-import RegisterView from '../views/registerView.vue'
 import SwipeView from '../views/swipeView.vue'
 import HomeView from '../views/homeView.vue'
 import SettingsView from '../views/settingsView.vue'
+import mainView from '../views/mainView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,13 +13,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
-    component: LoginView,
-    meta: { showHeader: false, requiresAuth: false }
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: RegisterView,
+    component: mainView,
     meta: { showHeader: false, requiresAuth: false }
   },
   {
