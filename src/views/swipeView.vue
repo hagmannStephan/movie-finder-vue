@@ -81,6 +81,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { moviesAPI, authAPI, type MovieProfile } from '../services/api'
+import { getCurrentInstance } from 'vue'
 
 const router = useRouter()
 
@@ -151,16 +152,19 @@ const loadMovieBatch = async () => {
 
 const likeMovie = async () => {
   if (!currentMovie.value?.id || isAnimating.value) return
-  
+
   try {
     isAnimating.value = true
-    await moviesAPI.likeMovie(currentMovie.value.id)
-    
-    // Add swipe animation
-    setTimeout(async () => {
-      await loadNextMovie()
-      isAnimating.value = false
-    }, 300)
+    await moviesAPI.addToFavorites(currentMovie.value.id)
+    // Globales Event auslösen, damit HomeView Favoriten neu lädt
+    const internalInstance = getCurrentInstance()
+    if (internalInstance && internalInstance.appContext.config.globalProperties) {
+      internalInstance.appContext.config.globalProperties.$emit &&
+        internalInstance.appContext.config.globalProperties.$emit('favorites-updated')
+    }
+    // Nächster Film sofort laden
+    await loadNextMovie()
+    isAnimating.value = false
   } catch (err: any) {
     console.error('Error liking movie:', err)
     error.value = 'Failed to like movie'
