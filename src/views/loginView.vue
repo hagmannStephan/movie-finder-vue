@@ -114,12 +114,10 @@ const submitRegister = async () => {
 
 <style scoped>
 .login-view {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #fff 0%, #2d2d2d 100%);
-  padding: 20px;
 }
 
 .login-container {
@@ -127,7 +125,7 @@ const submitRegister = async () => {
   border-radius: 16px;
   padding: 40px;
   width: 100%;
-  max-width: 400px;
+  max-width: 350px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
@@ -140,6 +138,7 @@ const submitRegister = async () => {
 }
 
 .mainTitle {
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;

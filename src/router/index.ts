@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import SwipeView from '../views/swipeView.vue'
 import HomeView from '../views/homeView.vue'
 import SettingsView from '../views/settingsView.vue'
-import mainView from '../views/mainView.vue'
+import loginView from '../views/loginView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
-    component: mainView,
+    component: loginView,
     meta: { showHeader: false, requiresAuth: false }
   },
   {

@@ -63,17 +63,20 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { compileTemplate } from 'vue/compiler-sfc'
 
 const route = useRoute()
 
 // Check current route
 const isSwipeView = computed(() => route.path === '/swipe')
 const isSettingsView = computed(() => route.path === '/settings')
+const isHomeView = computed(() => route.path === "/home")
 
 // Dynamic routing based on current page
 const leftIconRoute = computed(() => {
   if (isSwipeView.value) return '/settings'
   if (isSettingsView.value) return '/home'
+  if (isHomeView.value) return "/swipe"
   return '/home' // default
 })
 
@@ -102,20 +105,22 @@ const rightIconLabel = computed(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
+  padding: 8px 20px;
   background: #2a2a2a;
   border-bottom: 1px solid #444;
   position: sticky;
   top: 0;
   z-index: 100;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .icon-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 33px;
+  height: 33px;
   border-radius: 12px;
   color: #888;
   text-decoration: none;

@@ -1,15 +1,16 @@
 <template>
   <div class="swipe-view">
-    <div class="user-greeting">
-      <h2>Hi, {{ userProfile?.name || '{username}' }}!</h2>
-    </div>
-
-    <div class="search-section">
-      <div class="search-bar" @click="openSearch">
-        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
-          <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    <div class="top-bar">
+      <div class="user-greeting">
+        <h2>Hi, {{ userProfile?.name || '{username}' }}!</h2>
+      </div>
+      <div class="search-section">
+        <div class="search-bar" @click="openSearch">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+            <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
       </div>
     </div>
 
@@ -19,7 +20,7 @@
           <img 
             v-if="currentMovie.poster_path" 
             :src="getImageUrl(currentMovie.poster_path)" 
-            :alt="currentMovie.title"
+            :alt="currentMovie.title || 'Movie Poster'"
             class="poster-image"
             @error="onImageError"
           />
@@ -218,7 +219,6 @@ const truncateText = (text: string, maxLength: number) => {
 <style scoped>
 .swipe-view {
   flex: 1;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -229,23 +229,33 @@ const truncateText = (text: string, maxLength: number) => {
   height: 100%;
 }
 
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  gap: 7rem;
+  margin-bottom: 0.5rem;
+}
+
 .user-greeting {
-  margin-bottom: 15px;
-  text-align: center;
+  margin-bottom: 0;
+  text-align: left;
   flex-shrink: 0;
 }
 
 .user-greeting h2 {
-  color: white;
   font-size: clamp(20px, 5vw, 24px);
   font-weight: 600;
   margin: 0;
 }
 
 .search-section {
-  margin-bottom: 20px;
+  margin-bottom: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   flex-shrink: 0;
 }
 
@@ -279,7 +289,9 @@ const truncateText = (text: string, maxLength: number) => {
   justify-content: center;
   margin: 10px 0;
   min-height: 0;
-  padding: 0 10px;
+  padding: 0 4px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .movie-card {
@@ -371,9 +383,8 @@ const truncateText = (text: string, maxLength: number) => {
 .swipe-actions {
   display: flex;
   justify-content: center;
-  gap: clamp(40px, 15vw, 60px);
-  margin-top: 20px;
-  padding: 10px 20px 20px;
+  gap: 6.5rem;
+  padding: 20px 20px;
   flex-shrink: 0;
 }
 
@@ -512,16 +523,21 @@ const truncateText = (text: string, maxLength: number) => {
 
 /* Mobile responsiveness */
 @media (max-width: 480px) {
-  .swipe-view {
-    padding: 15px 10px;
+  .top-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
   }
-  
   .user-greeting {
+    text-align: center;
     margin-bottom: 10px;
   }
-  
   .search-section {
+    justify-content: center;
     margin-bottom: 15px;
+  }
+  .swipe-view {
+    padding: 15px 10px;
   }
   
   .movie-card-container {

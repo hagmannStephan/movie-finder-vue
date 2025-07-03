@@ -144,11 +144,8 @@ const logout = async () => {
   margin: 0 auto;
   font-family: 'Roboto', sans-serif;
   color: white;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  /* background-color: var(--ash-gray); */
 }
-
-
 
 .settings-container {
   background: #2a2a2a;
