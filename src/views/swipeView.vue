@@ -79,11 +79,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 import { moviesAPI, authAPI, type MovieProfile } from '../services/api'
 import { getCurrentInstance } from 'vue'
 
-const router = useRouter()
+// const router = useRouter()
 
 // State
 const currentMovie = ref<MovieProfile | null>(null)

@@ -114,7 +114,7 @@ const showCreateGroupModal = ref(false)
 const showEditGroupModal = ref(false)
 const showLeaveConfirmModal = ref(false)
 const selectedGroup = ref<GroupDisplay | null>(null)
-const groupMembers = ref<{user_id: number, name: string}[]>([])
+// const groupMembers = ref<{user_id: number, name: string}[]>([])
 const loading = ref(false)
 const error = ref('')
 const currentUserId = ref<number>(0)
@@ -387,7 +387,7 @@ const onGroupDeleted = async () => {
 .group-item {
   background: #23272f;
   border-radius: 12px;
-  padding: 1rem 1.5rem;
+  margin: 1rem 1.5rem;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
   border: 1px solid #333;
@@ -408,6 +408,7 @@ const onGroupDeleted = async () => {
 .group-name {
   color: #fff;
   font-size: 1.1rem;
+  margin-left: 1rem;
   font-weight: 600;
   flex: 1;
 }
@@ -447,6 +448,7 @@ const onGroupDeleted = async () => {
   color: white;
   border: none;
   padding: 1rem 2rem;
+  margin-bottom: 1rem;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;

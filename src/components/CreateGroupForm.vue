@@ -170,7 +170,6 @@ const removeMember = (index: number) => {
 }
 
 .group-name-input {
-  width: 100%;
   padding: 12px 16px;
   border: 1px solid #444;
   border-radius: 8px;

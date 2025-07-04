@@ -193,12 +193,12 @@ const loadGroupDetails = async (source = 'initial') => {
     const groupResponse = await groupsAPI.getGroupWithMembers(props.group.id)
     groupData.value = groupResponse.data
     
-    console.log(`[${source}] Group data loaded:`, groupData.value)
-    console.log(`[${source}] Group admin_id:`, groupData.value.admin_id)
-    console.log(`[${source}] Is current user admin?`, groupData.value.admin_id === currentUserId.value)
+    // console.log(`[${source}] Group data loaded:`, groupData.value)
+    // console.log(`[${source}] Group admin_id:`, groupData.value.admin_id)
+    // console.log(`[${source}] Is current user admin?`, groupData.value.admin_id === currentUserId.value)
     
     // Since we can't get individual user details, just show user IDs
-    if (groupData.value.members && groupData.value.members.length > 0) {
+    if (groupData.value && groupData.value.members && groupData.value.members.length > 0) {
       console.log(`[${source}] Member IDs:`, groupData.value.members)
       
       members.value = groupData.value.members.map((userId: number) => ({
