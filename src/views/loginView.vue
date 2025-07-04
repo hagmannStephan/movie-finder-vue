@@ -117,7 +117,6 @@ const submitRegister = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #fff 0%, #2d2d2d 100%);
 }
 
 .login-container {
