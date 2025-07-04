@@ -236,11 +236,12 @@ const onGroupDeleted = async () => {
   padding: 0;
   list-style: none;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   gap: 1.5rem;
   justify-content: center;
-  overflow-x: auto;
+  max-height: 400px;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #4caf50 #23272f;
 }
