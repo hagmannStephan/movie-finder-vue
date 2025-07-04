@@ -36,7 +36,7 @@ const back = () => {
 };
 
 const submitLogin = async () => {
-  console.log(email.value, password.value);
+  // console.log(email.value, password.value);
   const formData = new URLSearchParams();
   formData.append('email', email.value);
   formData.append('password', password.value);
@@ -48,7 +48,7 @@ const submitLogin = async () => {
   });
 
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   if (data.access_token) {
     localStorage.setItem('authToken', data.access_token);
     localStorage.setItem('refresh_token', data.refresh_token);
